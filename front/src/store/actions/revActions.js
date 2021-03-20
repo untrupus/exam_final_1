@@ -64,10 +64,10 @@ export const addReviewPhoto = data => {
     }
 };
 
-export const deleteReview = id => {
+export const deleteReview = (id, shelterId) => {
     return async dispatch => {
         try {
-
+            await axios.patch("/reviews/" + id, { shelterId});
             dispatch(deleteReviewSuccess(id));
         } catch (e) {
             dispatch(deleteReviewFailure(e));

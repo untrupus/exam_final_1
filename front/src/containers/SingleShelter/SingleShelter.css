@@ -112,3 +112,21 @@
 .reviewerName {
     margin-bottom: 0px;
 }
+
+.rating {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.ratings {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 10px 30px 10px;
+}
+
+.removeBtn {
+    margin-left: auto;
+    margin-top: 20px;
+}

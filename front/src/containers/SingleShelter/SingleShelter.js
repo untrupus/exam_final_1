@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useSelector, useDispatch} from "react-redux";
-import {addShelter, getSingleShelter, deleteShelter} from "../../store/actions/shelterActions";
+import {getSingleShelter, deleteShelter} from "../../store/actions/shelterActions";
 import {addReview, addReviewPhoto, deleteReview, deleteReviewPhoto} from "../../store/actions/revActions";
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Rating from '@material-ui/lab/Rating';
@@ -17,9 +17,9 @@ const SingleShelter = (props) => {
         fromName: user ? user.user.displayName : null,
         to: props.match.params.id,
         text: '',
-        food: '',
-        interior: '',
-        service: ''
+        food: 0,
+        interior: 0,
+        service: 0
     });
 
     const [image, setImage] = useState({
@@ -44,6 +44,11 @@ const SingleShelter = (props) => {
         }));
     };
 
+    const removeReview = async (id) => {
+        await dispatch(deleteReview(id, props.match.params.id));
+        dispatch(getSingleShelter(props.match.params.id));
+    }
+
     const addRev = data => {
         dispatch(addReview(data));
         dispatch(getSingleShelter(props.match.params.id));
@@ -52,7 +57,6 @@ const SingleShelter = (props) => {
 
     const removePhoto = async (id) => {
         await dispatch(deleteReviewPhoto(id, props.match.params.id));
-
         dispatch(getSingleShelter(props.match.params.id));
     };
 
@@ -114,7 +118,7 @@ const SingleShelter = (props) => {
     } else if (singleShelter && singleShelter.reviews) (
         reviews = singleShelter.reviews.map(review => {
             return (
-                <div className='singleReview'>
+                <div className='singleReview' key={review._id}>
                     <h4 className='reviewerName'>{review.fromName}</h4>
                     <span className='label'>Service: </span>
                     <Rating
@@ -140,6 +144,15 @@ const SingleShelter = (props) => {
                         precision={0.1}
                         emptyIcon={<StarBorderIcon fontSize="inherit"/>}
                     />
+                    {(user && user.user.role === 'admin') ?
+                        <button
+                            type='button'
+                            className='removeBtn'
+                            onClick={() => removeReview(review._id)}
+                        >
+                            Remove
+                        </button>
+                        : null}
                 </div>
             )
         })
@@ -168,7 +181,31 @@ const SingleShelter = (props) => {
                 {gallery}
             </div>
             <div className='ratings'>
-                ratings
+                <h3 className='reviewerName'>Rating</h3>
+                <span className='label'>Service: </span>
+                <Rating
+                    className='rating'
+                    readOnly
+                    // defaultValue={review.service}
+                    precision={0.1}
+                    emptyIcon={<StarBorderIcon fontSize="inherit"/>}
+                />
+                <span className='label'>Food: </span>
+                <Rating
+                    className='rating'
+                    readOnly
+                    // defaultValue={review.food}
+                    precision={0.1}
+                    emptyIcon={<StarBorderIcon fontSize="inherit"/>}
+                />
+                <span className='label'>Interior: </span>
+                <Rating
+                    className='rating'
+                    readOnly
+                    // defaultValue={review.interior}
+                    precision={0.1}
+                    emptyIcon={<StarBorderIcon fontSize="inherit"/>}
+                />
             </div>
             <div className='reviews'>
                 {reviews}

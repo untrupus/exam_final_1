@@ -20,9 +20,10 @@ const MainPage = () => {
         );
     } else {
         sheltersList = shelters.map(shelter => {
+            let value = 4;
             return (
                 <PlaceCard
-                    value={3}
+                    value={value / shelter.reviews.length}
                     key={shelter._id}
                     name={shelter.name}
                     img={shelter.image}
