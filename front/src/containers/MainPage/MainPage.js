@@ -20,14 +20,30 @@ const MainPage = () => {
         );
     } else {
         sheltersList = shelters.map(shelter => {
-            // if (shelter && shelters.reviews && shelters.reviews > 0) {
-            //     const total = shelters.reviews.reduce((prev,next) => prev + next.food, 0);
-            //     console.log(total);
-            // }
+            let totalFood;
+            let totalService;
+            let totalInterior;
+            let total;
+
+            if (shelter && shelter.reviews) {
+                totalFood = shelter.reviews.reduce((prev, next) => prev + next.food, 0);
+                totalFood = totalFood / shelter.reviews.length;
+            }
+            if (shelter && shelter.reviews) {
+                totalService = shelter.reviews.reduce((prev, next) => prev + next.service, 0);
+                totalService = totalService / shelter.reviews.length;
+            }
+            if (shelter && shelter.reviews) {
+                totalInterior = shelter.reviews.reduce((prev, next) => prev + next.interior, 0);
+                totalInterior = totalInterior / shelter.reviews.length;
+            }
+            if (shelter && shelter.reviews) {
+                total = (totalFood + totalInterior + totalService) / 3;
+            }
 
             return (
                 <PlaceCard
-                    // value={value}
+                    value={total ? total : 0}
                     key={shelter._id}
                     name={shelter.name}
                     img={shelter.image}

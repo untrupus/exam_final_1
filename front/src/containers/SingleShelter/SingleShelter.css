@@ -130,3 +130,12 @@
     margin-left: auto;
     margin-top: 20px;
 }
+
+.carouselItem {
+    height: 400px;
+    width: auto;
+}
+
+.carousel {
+    margin: 0 auto;
+}

@@ -19,7 +19,7 @@ const PlaceCard = (props) => {
                     <Rating
                         readOnly
                         name="customized-empty"
-                        defaultValue={props.value}
+                        value={props.value}
                         precision={0.5}
                         emptyIcon={<StarBorderIcon fontSize="inherit" />}
                     />
