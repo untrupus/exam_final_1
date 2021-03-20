@@ -64,7 +64,30 @@ db.once("open", async () => {
         image: "3.jpeg",
         user: admin._id,
         images: [{image: '4.jpeg', from: user._id},{image: '6.jpeg', from: user._id},],
-        reviews: [],
+        reviews: [{
+            from: user._id,
+            fromName: user.displayName,
+            text: 'You can display a label on hover to help users pick the correct rating value. The demo uses the onChangeActive prop.',
+            food: 5,
+            interior: 4,
+            service: 3
+        },
+            {
+                from: user._id,
+                fromName: user.displayName,
+                text: 'You can display a label on hover to help users pick the correct rating value. The demo uses the onChangeActive prop.',
+                food: 3,
+                interior: 4,
+                service: 1
+            },
+            {
+                from: user._id,
+                fromName: user.displayName,
+                text: 'You can display a label on hover to help users pick the correct rating value. The demo uses the onChangeActive prop.',
+                food: 5,
+                interior: 5,
+                service: 5
+            }],
         description: 'Our menu is based on the principles of using the high quality raw local ingredients, along with the best of ingredients imported from around the world, freshly cooked and presented by our head chef Matt Clarke and his team with care and attention. There is a wide selection to choose from, including fresh fish, char-grills, ala’carte selections and special menus.'
     });
 
