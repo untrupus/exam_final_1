@@ -156,3 +156,10 @@
 .second {
     margin-left: 30px;
 }
+
+.date {
+    margin-top: 20px;
+    display: block;
+    font-style: italic;
+    margin-left: 30px;
+}

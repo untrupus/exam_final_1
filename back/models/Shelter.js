@@ -21,6 +21,7 @@ const ReviewSchema = new Schema({
         required: true
     },
     fromName: String,
+    datetime: Date,
     text: {
         type: String,
         required: true

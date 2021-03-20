@@ -177,6 +177,8 @@ const SingleShelter = (props) => {
                                 Remove
                             </button>
                             : null}
+                        <span className='date'>At {new Date(review.datetime).toISOString().slice(0, 10)}</span>
+                        <span className='date'>{new Date(review.datetime).toISOString().slice(11, 19)}</span>
                     </div>
                 )
             })

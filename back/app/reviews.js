@@ -7,8 +7,10 @@ const permit = require("../middleware/permit");
 
 router.post("/", auth, async (req, res) => {
     const shelter = await Shelter.findById(req.body.to);
+    const reviewData = req.body;
+    reviewData.datetime = new Date();
     try {
-        await shelter.updateOne({$push: {reviews: req.body}});
+        await shelter.updateOne({$push: {reviews: reviewData}});
         res.send({message: 'success'});
     } catch (e) {
         res.status(400).send(e);
