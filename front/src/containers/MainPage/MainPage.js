@@ -22,11 +22,13 @@ const MainPage = () => {
         sheltersList = shelters.map(shelter => {
             return (
                 <PlaceCard
+                    value={3}
                     key={shelter._id}
                     name={shelter.name}
                     img={shelter.image}
                     id={shelter._id}
                     length={shelter.images.length}
+                    reviews={shelter.reviews.length}
                 />
             );
         })

@@ -6,7 +6,13 @@ const auth = require('../middleware/auth');
 const permit = require("../middleware/permit");
 
 router.post("/", auth, async (req, res) => {
-
+    const shelter = await Shelter.findById(req.body.to);
+    try {
+        await shelter.updateOne({$push: {reviews: req.body}});
+        res.send({message: 'success'});
+    } catch (e) {
+        res.status(400).send(e);
+    }
 });
 
 router.post("/photo", [auth, config.upload.single("image")], async (req, res) => {

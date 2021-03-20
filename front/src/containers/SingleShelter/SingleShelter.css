@@ -61,9 +61,42 @@
     width: 23%;
     margin-bottom: 10px;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .imgInner {
     width: 100%;
     height: auto;
+    flex-grow: 1;
+    margin-bottom: 5px;
+}
+
+.selects {
+    display: flex;
+    align-items: center;
+
+}
+
+.label {
+    margin-top: 20px;
+    margin-left: 30px;
+    display: block;
+}
+
+.reviews {
+    border-top: 1px solid cadetblue;
+    display: flex;
+    margin-top: 10px;
+    padding-top: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.singleReview {
+    border: 1px solid cadetblue;
+    border-radius: 4px;
+    width: 18%;
+    margin-bottom: 10px;
 }

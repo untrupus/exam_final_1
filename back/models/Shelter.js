@@ -20,6 +20,7 @@ const ReviewSchema = new Schema({
         ref: "User",
         required: true
     },
+    fromName: String,
     text: {
         type: String,
         required: true

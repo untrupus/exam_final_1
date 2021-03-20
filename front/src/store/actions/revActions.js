@@ -45,7 +45,7 @@ const deleteReviewPhotoFailure = error => {
 export const addReview = data => {
     return async dispatch => {
         try {
-
+            await axios.post("/reviews", data);
             dispatch(addReviewSuccess());
         } catch (e) {
             dispatch(addReviewFailure(e));
