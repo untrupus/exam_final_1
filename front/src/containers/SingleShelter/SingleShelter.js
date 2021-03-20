@@ -11,15 +11,17 @@ const SingleShelter = (props) => {
     const user = useSelector(state => state.users.user);
     const singleShelter = useSelector(state => state.shelters.singleShelter);
     const dispatch = useDispatch();
+
     const [review, setReview] = useState({
-        from: user.user._id,
-        fromName: user.user.displayName,
+        from: user ? user.user._id : null,
+        fromName: user ? user.user.displayName : null,
         to: props.match.params.id,
         text: '',
         food: '',
         interior: '',
         service: ''
     });
+
     const [image, setImage] = useState({
         to: props.match.params.id,
         image: ''
@@ -113,26 +115,30 @@ const SingleShelter = (props) => {
         reviews = singleShelter.reviews.map(review => {
             return (
                 <div className='singleReview'>
-                    <span className='label'>Service: : </span>
+                    <h4 className='reviewerName'>{review.fromName}</h4>
+                    <span className='label'>Service: </span>
                     <Rating
+                        className='rate'
                         readOnly
                         defaultValue={review.service}
                         precision={0.1}
-                        emptyIcon={<StarBorderIcon fontSize="inherit" />}
+                        emptyIcon={<StarBorderIcon fontSize="inherit"/>}
                     />
                     <span className='label'>Food: </span>
                     <Rating
+                        className='rate'
                         readOnly
                         defaultValue={review.food}
                         precision={0.1}
-                        emptyIcon={<StarBorderIcon fontSize="inherit" />}
+                        emptyIcon={<StarBorderIcon fontSize="inherit"/>}
                     />
                     <span className='label'>Interior: </span>
                     <Rating
+                        className='rate'
                         readOnly
                         defaultValue={review.interior}
                         precision={0.1}
-                        emptyIcon={<StarBorderIcon fontSize="inherit" />}
+                        emptyIcon={<StarBorderIcon fontSize="inherit"/>}
                     />
                 </div>
             )
@@ -183,7 +189,7 @@ const SingleShelter = (props) => {
                             defaultValue={review.service}
                             precision={1}
                             onChange={inputChangeHandler}
-                            emptyIcon={<StarBorderIcon fontSize="inherit" />}
+                            emptyIcon={<StarBorderIcon fontSize="inherit"/>}
                         />
                         <p className='label'>Food: </p>
                         <Rating
@@ -191,7 +197,7 @@ const SingleShelter = (props) => {
                             defaultValue={review.food}
                             precision={1}
                             onChange={inputChangeHandler}
-                            emptyIcon={<StarBorderIcon fontSize="inherit" />}
+                            emptyIcon={<StarBorderIcon fontSize="inherit"/>}
                         />
                         <p className='label'>Interior: </p>
                         <Rating
@@ -199,7 +205,7 @@ const SingleShelter = (props) => {
                             defaultValue={review.interior}
                             precision={1}
                             onChange={inputChangeHandler}
-                            emptyIcon={<StarBorderIcon fontSize="inherit" />}
+                            emptyIcon={<StarBorderIcon fontSize="inherit"/>}
                         />
 
                     </div>

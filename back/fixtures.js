@@ -35,7 +35,22 @@ db.once("open", async () => {
         image: "1.jpeg",
         user: user._id,
         images: [{image: '4.jpeg', from: user._id},{image: '5.jpeg', from: user._id},{image: '6.jpeg', from: user._id},],
-        reviews: [],
+        reviews: [{
+            from: user._id,
+            fromName: user.displayName,
+            text: 'You can display a label on hover to help users pick the correct rating value. The demo uses the onChangeActive prop.',
+            food: 5,
+            interior: 4,
+            service: 3
+        },
+            {
+                from: user._id,
+                fromName: user.displayName,
+                text: 'You can display a label on hover to help users pick the correct rating value. The demo uses the onChangeActive prop.' ,
+                food: 2,
+                interior: 5,
+                service: 4
+            }],
         description: 'Enjoy a drink in our spacious lounge bar, is a truly enjoyable experience – the views of the natural harbour, no ships just a variety of birds and may be even spot a stray seal or penguin and then across the water with the opposite side comprising of natural terrain, with the names of ships picked out by natural stones will help to ensure that you will have a “relaxing drink”'
     }, {
         name: "Buddha Bar",
