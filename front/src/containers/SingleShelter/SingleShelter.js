@@ -82,7 +82,22 @@ const SingleShelter = (props) => {
             }));
         }
     };
+    let totalFood;
+    let totalService;
+    let totalInterior;
 
+    if (singleShelter && singleShelter.reviews) {
+        totalFood = singleShelter.reviews.reduce((prev, next) => prev + next.food, 0);
+        totalFood = totalFood / singleShelter.reviews.length;
+    }
+    if (singleShelter && singleShelter.reviews) {
+        totalService = singleShelter.reviews.reduce((prev, next) => prev + next.service, 0);
+        totalService = totalService / singleShelter.reviews.length;
+    }
+    if (singleShelter && singleShelter.reviews) {
+        totalInterior = singleShelter.reviews.reduce((prev, next) => prev + next.interior, 0);
+        totalInterior = totalInterior / singleShelter.reviews.length;
+    }
     let gallery;
     if (singleShelter && singleShelter.images && singleShelter.images.length === 0) {
         gallery = (
@@ -186,7 +201,7 @@ const SingleShelter = (props) => {
                 <Rating
                     className='rating'
                     readOnly
-                    // defaultValue={review.service}
+                    value={totalService ? totalService : 0}
                     precision={0.1}
                     emptyIcon={<StarBorderIcon fontSize="inherit"/>}
                 />
@@ -194,7 +209,7 @@ const SingleShelter = (props) => {
                 <Rating
                     className='rating'
                     readOnly
-                    // defaultValue={review.food}
+                    value={totalFood ? totalFood : 0}
                     precision={0.1}
                     emptyIcon={<StarBorderIcon fontSize="inherit"/>}
                 />
@@ -202,7 +217,7 @@ const SingleShelter = (props) => {
                 <Rating
                     className='rating'
                     readOnly
-                    // defaultValue={review.interior}
+                    value={totalInterior ? totalInterior : 0}
                     precision={0.1}
                     emptyIcon={<StarBorderIcon fontSize="inherit"/>}
                 />

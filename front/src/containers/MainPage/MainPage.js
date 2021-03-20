@@ -20,10 +20,14 @@ const MainPage = () => {
         );
     } else {
         sheltersList = shelters.map(shelter => {
-            let value = 4;
+            // if (shelter && shelters.reviews && shelters.reviews > 0) {
+            //     const total = shelters.reviews.reduce((prev,next) => prev + next.food, 0);
+            //     console.log(total);
+            // }
+
             return (
                 <PlaceCard
-                    value={value / shelter.reviews.length}
+                    // value={value}
                     key={shelter._id}
                     name={shelter.name}
                     img={shelter.image}
