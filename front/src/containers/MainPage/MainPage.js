@@ -26,6 +26,7 @@ const MainPage = () => {
                     name={shelter.name}
                     img={shelter.image}
                     id={shelter._id}
+                    length={shelter.images.length}
                 />
             );
         })

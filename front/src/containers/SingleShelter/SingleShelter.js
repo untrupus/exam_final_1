@@ -37,8 +37,8 @@ const SingleShelter = (props) => {
             }));
         };
 
-        const removePhoto = (id) => {
-            dispatch(deleteReviewPhoto(id));
+        const removePhoto = async (id) => {
+            await dispatch(deleteReviewPhoto(id, props.match.params.id));
             dispatch(getSingleShelter(props.match.params.id));
         };
 
@@ -140,7 +140,7 @@ const SingleShelter = (props) => {
                                 type='file'
                                 ref={inputRef}
                                 name="image"
-                                style={{display: 'none'}}
+                                // style={{display: 'none'}}
                                 id="raised-button-file"
                                 className='signUpField'
                                 required={true}

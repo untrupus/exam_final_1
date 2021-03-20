@@ -28,10 +28,11 @@ router.delete("/:id", [auth, permit("admin")], async (req, res) => {
 
 });
 
-router.delete("/photo/:id", [auth, permit("admin")], async (req, res) => {
-    const shelter = await Shelter.findById(req.params.id);
+router.patch("/photo/:id", [auth, permit("admin")], async (req, res) => {
+    const shelter = await Shelter.findById(req.body.shelterId);
+
     try {
-        await shelter.updateOne({$pull: {images: {_id: req.params._id}}});
+        await shelter.updateOne({$pull: {images: {_id: req.params.id}}});
         res.send({message: "Success"});
     } catch (e) {
         res.status(400).send(e);

@@ -14,6 +14,7 @@ const PlaceCard = (props) => {
             </Link>
             <div className='placeInfo'>
                 <h3>{props.name}</h3>
+                <p><b>{props.length > 0 ? props.length : 0}</b> photos</p>
             </div>
         </div>
     );
