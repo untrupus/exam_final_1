@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const {nanoid} = require("nanoid");
 const config = require("./config");
 const User = require("./models/User");
+const Shelter = require("./models/Shelter");
 
 mongoose.connect(config.db.url + "/" + config.db.name, {useNewUrlParser: true});
 
@@ -22,155 +23,35 @@ db.once("open", async () => {
         role: "user",
         displayName: "Vegard",
     }, {
-        email: "qwe@.qwe.qwe",
+        email: "qwe@qwe.qwe",
         password: "123",
         token: nanoid(),
         role: "admin",
         displayName: "Admin"
     });
 
-    // const [death, nin, morfer] = await Artist.create({
-    //     name: "Death",
-    //     image: "death.jpg",
-    //     published: true,
-    //     user: user._id
-    // }, {
-    //     name: "NIN",
-    //     image: "nin.png",
-    //     published: true,
-    //     user: user._id
-    // }, {
-    //     name: "Morfer",
-    //     image: "morfer.png",
-    //     published: false,
-    //     user: user._id
-    // });
-    //
-    // const [human, symbolic, spiral, tribunal] = await Album.create({
-    //     name: "Human",
-    //     year: 1991,
-    //     artist: death._id,
-    //     image: "Human.jpg",
-    //     published: false,
-    //     user: user._id
-    // }, {
-    //     name: "Symbolic",
-    //     year: 1995,
-    //     artist: death._id,
-    //     image: "symbolic.jpg",
-    //     published: true,
-    //     user: user._id
-    // }, {
-    //     name: "The Downward Spiral",
-    //     year: 1994,
-    //     artist: nin._id,
-    //     image: "downward.jpg",
-    //     published: true,
-    //     user: user._id
-    // }, {
-    //     name: "Tribunal",
-    //     year: 2020,
-    //     artist: morfer._id,
-    //     image: "tribunal.png",
-    //     published: true,
-    //     user: user._id
-    // });
-    //
-    // const [lack, see, sacred, crystal, hurt, vandallen] = await Track.create({
-    //         name: "Lack Of Comprehension",
-    //         duration: "3.47",
-    //         album: human._id,
-    //         number: 5,
-    //         youtube: "7j8vUbMmOwM",
-    //         published: true,
-    //         artist: death._id,
-    //         user: user._id
-    //     }, {
-    //         name: "See Through Dreams",
-    //         duration: "3.56",
-    //         album: human._id,
-    //         number: 6,
-    //         published: false,
-    //         artist: death._id,
-    //         user: user._id
-    //     }, {
-    //         name: "Sacred Serenity",
-    //         duration: "4.29",
-    //         album: symbolic._id,
-    //         number: 3,
-    //         youtube: "-as4LausEok",
-    //         published: true,
-    //         artist: death._id,
-    //         user: user._id
-    //     }, {
-    //         name: "Crystal mountain",
-    //         duration: "5.07",
-    //         album: symbolic._id,
-    //         number: 6,
-    //         youtube: "zguCFjHyVeM",
-    //         published: false,
-    //         artist: death._id,
-    //         user: user._id
-    //     }, {
-    //         name: "Hurt",
-    //         duration: "3.56",
-    //         album: spiral._id,
-    //         number: 1,
-    //         youtube: "6oGqIfnIAEA",
-    //         published: true,
-    //         artist: nin._id,
-    //         user: user._id
-    //     }, {
-    //         name: "Heresy",
-    //         duration: "4.22",
-    //         album: spiral._id,
-    //         number: 2,
-    //         published: false,
-    //         artist: nin._id,
-    //         user: user._id
-    //     }, {
-    //         name: "Vandallen",
-    //         duration: "6.29",
-    //         album: tribunal._id,
-    //         number: 1,
-    //         youtube: "4A2N2u9ee1o",
-    //         published: false,
-    //         artist: morfer._id,
-    //         user: user._id
-    //     }, {
-    //         name: "Forbannet",
-    //         duration: "6.29",
-    //         album: tribunal._id,
-    //         number: 2,
-    //         published: true,
-    //         artist: morfer._id,
-    //         user: user._id
-    //     }, {
-    //         name: "Dark Wisdom",
-    //         duration: "6.29",
-    //         album: tribunal._id,
-    //         number: 3,
-    //         published: false,
-    //         youtube: "HLR8YWIuEOk",
-    //         artist: morfer._id,
-    //         user: user._id
-    //     },
-    // );
-    //
-    // await TrackHistory.create({
-    //         user: user._id,
-    //         track: lack._id,
-    //         datetime: "Wed Nov 18 2020 01:59:36 GMT+0600 (Kyrgyzstan Time)"
-    //     }, {
-    //         user: user._id,
-    //         track: see._id,
-    //         datetime: "Wed Nov 18 2020 02:59:36 GMT+0600 (Kyrgyzstan Time)"
-    //     }, {
-    //         user: user._id,
-    //         track: sacred._id,
-    //         datetime: "Wed Nov 18 2020 03:59:36 GMT+0600 (Kyrgyzstan Time)"
-    //     },
-    // );
+    const [Leprecon, Buddha, moRiverrfer] = await Shelter.create({
+        name: "Leprecon Bar",
+        image: "1.jpeg",
+        user: user._id,
+        images: [],
+        reviews: [],
+        description: 'Enjoy a drink in our spacious lounge bar, is a truly enjoyable experience – the views of the natural harbour, no ships just a variety of birds and may be even spot a stray seal or penguin and then across the water with the opposite side comprising of natural terrain, with the names of ships picked out by natural stones will help to ensure that you will have a “relaxing drink”'
+    }, {
+        name: "Buddha Bar",
+        image: "2.jpeg",
+        user: user._id,
+        images: [],
+        reviews: [],
+        description: 'There is a full range of bar drinks including a wide selection of spirits, Whisky, Brandy and Liqueurs, soft drinks and  beer including and Falkland Islands only real ale.  The wine list includes a variety and styles of wine including the famous Montes premium wine produced in Chile, with wines by the bottle and glass.'
+    }, {
+        name: "River Pub",
+        image: "3.jpeg",
+        user: admin._id,
+        images: [],
+        reviews: [],
+        description: 'Our menu is based on the principles of using the high quality raw local ingredients, along with the best of ingredients imported from around the world, freshly cooked and presented by our head chef Matt Clarke and his team with care and attention. There is a wide selection to choose from, including fresh fish, char-grills, ala’carte selections and special menus.'
+    });
 
     db.close();
 });

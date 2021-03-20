@@ -85,7 +85,6 @@ const AddShelter = () => {
                 <button
                     type='button'
                     className='signBtn'
-                    disabled
                     onClick={formSubmit}
                 >
                     Add

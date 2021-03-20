@@ -30,16 +30,13 @@ router.post('/', [auth, config.upload.single("image")], async (req, res) => {
         shelterData.image = req.file.filename;
     }
     const shelter = new Shelter(shelterData);
-    if (req.body.agree === 'true') {
-        try {
-            await shelter.save();
-            res.send(shelter);
-        } catch (e) {
-            res.status(400).send(e);
-        }
-    } else {
-        res.sendStatus(404);
+    try {
+        await shelter.save();
+        res.send(shelter);
+    } catch (e) {
+        res.status(400).send(e);
     }
+
 });
 
 router.delete('/:id', [auth, permit("admin")], async (req, res) => {

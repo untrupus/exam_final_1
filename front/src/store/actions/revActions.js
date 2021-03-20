@@ -8,6 +8,7 @@ import {
     DELETE_REVIEW_PHOTO_FAILURE,
     DELETE_REVIEW_PHOTO_SUCCESS
 } from "../actionTypes";
+import axios from "../../axiosApi";
 
 const addReviewSuccess = (data) => {
     return {type: ADD_REVIEW_SUCCESS, data};
@@ -55,7 +56,7 @@ export const addReview = data => {
 export const addReviewPhoto = data => {
     return async dispatch => {
         try {
-
+            await axios.post("/reviews/photo", data);
             dispatch(addReviewPhotoSuccess());
         } catch (e) {
             dispatch(addReviewPhotoFailure(e));

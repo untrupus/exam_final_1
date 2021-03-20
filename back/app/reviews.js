@@ -11,7 +11,17 @@ router.post("/", auth, async (req, res) => {
 
 router.post("/photo", [auth, config.upload.single("image")], async (req, res) => {
     const shelter = await Shelter.findById(req.body.to);
-    shelter.images.push
+    let imageData = req.body;
+    if (req.file) {
+        imageData.image = req.file.filename;
+    }
+    try {
+        await shelter.updateOne({$push: {images: imageData}});
+        res.send({message: 'success'});
+    } catch (e) {
+        res.status(400).send(e);
+    }
+
 });
 
 router.delete("/:id", [auth, permit("admin")], async (req, res) => {
