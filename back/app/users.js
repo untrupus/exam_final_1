@@ -10,9 +10,6 @@ router.post("/", config.upload.single("avatarImage"), async (req, res) => {
         email: req.body.email,
         password: req.body.password,
     }
-    if (req.file) {
-        userData.avatarImage = req.file.filename;
-    }
     const user = new User(userData);
     try {
         user.generateToken();

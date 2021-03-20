@@ -10,7 +10,7 @@ const AddShelter = () => {
         name: '',
         description: '',
         image: '',
-        agree: false
+        agree: 'false'
     })
 
     const inputChangeHandler = (e) => {
@@ -22,7 +22,7 @@ const AddShelter = () => {
     };
     const checked = e => {
         setPlace(prevState => {
-            return {...prevState, agree: !place.agree};
+            return {...prevState, agree: 'true'};
         });
     };
 
@@ -41,6 +41,9 @@ const AddShelter = () => {
             formData.append(key, place[key]);
         });
         dispatch(addShelter(formData));
+        setPlace(prevState => {
+            return {...prevState, agree: 'false'};
+        });
     };
 
     return (
@@ -82,7 +85,7 @@ const AddShelter = () => {
                 <button
                     type='button'
                     className='signBtn'
-
+                    disabled
                     onClick={formSubmit}
                 >
                     Add

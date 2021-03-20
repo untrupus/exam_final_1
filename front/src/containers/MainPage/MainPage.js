@@ -22,6 +22,7 @@ const MainPage = () => {
         sheltersList = shelters.map(shelter => {
             return (
                 <PlaceCard
+                    key={shelter._id}
                     name={shelter.name}
                     img={shelter.image}
                     id={shelter._id}

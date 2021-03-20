@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useSelector, useDispatch} from "react-redux";
-import {addShelter, getSingleShelter} from "../../store/actions/shelterActions";
+import {addShelter, getSingleShelter, deleteShelter} from "../../store/actions/shelterActions";
+import {addReview, addReviewPhoto, deleteReview, deleteReviewPhoto} from "../../store/actions/revActions";
 import './SingleShelter.css';
 
 const SingleShelter = (props) => {
@@ -15,6 +16,8 @@ const SingleShelter = (props) => {
         service: ''
     })
     const [image, setImage] = useState({
+        to: props.match.params.id,
+        // from: user._id,
         image: ''
     });
 
@@ -22,6 +25,10 @@ const SingleShelter = (props) => {
         dispatch(getSingleShelter(props.match.params.id));
     }, [dispatch, props.match.params.id]);
 
+
+    const remove = id => {
+      dispatch(deleteShelter(id))
+    };
 
     const fileChangeHandler = e => {
         const name = e.target.name;
@@ -37,7 +44,7 @@ const SingleShelter = (props) => {
         Object.keys(image).forEach(key => {
             formData.append(key, image[key]);
         });
-        dispatch(addShelter(formData));
+        dispatch(addReviewPhoto(formData));
     };
 
     return (
@@ -46,10 +53,11 @@ const SingleShelter = (props) => {
                 <div className='shelterDescription'>
                     <h1>{singleShelter.name}</h1>
                     <p><b>Description:</b> {singleShelter.description}</p>
-                    {(user && user.role === 'user') ?
+                    {(user && user.user.role === 'admin') ?
                         <button
                             type='button'
                             className='signBtn'
+                            onClick={() => remove(props.match.params.id)}
                         >
                             Remove
                         </button>
@@ -93,6 +101,7 @@ const SingleShelter = (props) => {
                         <button
                             type='button'
                             className='addImage'
+                            onClick={formSubmit}
                         >
                             Add Image
                         </button>

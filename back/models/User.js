@@ -37,7 +37,6 @@ const UserSchema = new Schema({
         required: true
     },
     fbAvatar: String,
-    avatarImage: String,
     facebookId: String
 });
 
