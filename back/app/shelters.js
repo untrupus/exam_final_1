@@ -30,6 +30,9 @@ router.post('/', [auth, config.upload.single("image")], async (req, res) => {
         shelterData.image = req.file.filename;
     }
     const shelter = new Shelter(shelterData);
+    if (req.body.agree === 'false') {
+        return res.status(400).send({message: 'You must accept terms'});
+    }
     try {
         await shelter.save();
         res.send(shelter);

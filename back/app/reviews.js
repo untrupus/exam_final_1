@@ -29,7 +29,13 @@ router.delete("/:id", [auth, permit("admin")], async (req, res) => {
 });
 
 router.delete("/photo/:id", [auth, permit("admin")], async (req, res) => {
-
+    const shelter = await Shelter.findById(req.params.id);
+    try {
+        await shelter.updateOne({$pull: {images: {_id: req.params._id}}});
+        res.send({message: "Success"});
+    } catch (e) {
+        res.status(400).send(e);
+    }
 });
 
 module.exports = router;

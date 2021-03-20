@@ -37,13 +37,18 @@ const SingleShelter = (props) => {
             }));
         };
 
-    const inputChangeHandler = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        setReview(prevState => {
-            return {...prevState, [name]: value};
-        });
-    };
+        const removePhoto = (id) => {
+            dispatch(deleteReviewPhoto(id));
+            dispatch(getSingleShelter(props.match.params.id));
+        };
+
+        const inputChangeHandler = (e) => {
+            const name = e.target.name;
+            const value = e.target.value;
+            setReview(prevState => {
+                return {...prevState, [name]: value};
+            });
+        };
 
         const formSubmit = async (e) => {
             e.preventDefault();
@@ -57,7 +62,6 @@ const SingleShelter = (props) => {
                 setImage(prevState => ({
                     ...prevState, image: ''
                 }));
-                // window.location.reload();
             }
         };
 
@@ -66,14 +70,24 @@ const SingleShelter = (props) => {
             gallery = (
                 <h2>Add first photo...</h2>
             )
-        } else if (singleShelter && singleShelter.images){
+        } else if (singleShelter && singleShelter.images) {
             gallery = singleShelter.images.map(img => {
                 return (
-                    <img
-                        src={'http://localhost:8000/uploads/' + img.image}
-                        className='singleImage'
-                        alt='galleryImage'
+                    <div className='singleImage' key={img._id}>
+                        <img
+                            src={'http://localhost:8000/uploads/' + img.image}
+                            className='imgInner'
+                            alt='galleryImage'
                         />
+                        {user && user.user.role === 'admin' ?
+                            <button
+                                type='button'
+                                onClick={() => removePhoto(img._id)}
+                            >
+                                remove
+                            </button>
+                            : null}
+                    </div>
                 )
             });
         }
@@ -126,16 +140,26 @@ const SingleShelter = (props) => {
                                 type='file'
                                 ref={inputRef}
                                 name="image"
+                                style={{display: 'none'}}
+                                id="raised-button-file"
                                 className='signUpField'
                                 required={true}
                                 onChange={fileChangeHandler}
                             />
+                            <label htmlFor="raised-button-file">
+                                <button
+                                    type='button'
+                                    className='addImage'
+                                >
+                                    Add Image
+                                </button>
+                            </label>
                             <button
                                 type='button'
                                 className='addImage'
                                 onClick={formSubmit}
                             >
-                                Add Image
+                                Send Image
                             </button>
                         </div>
                     </div>

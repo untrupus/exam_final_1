@@ -59,6 +59,11 @@
 
 .singleImage {
     width: 23%;
-    height: auto;
     margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.imgInner {
+    width: 100%;
+    height: auto;
 }

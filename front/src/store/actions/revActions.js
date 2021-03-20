@@ -75,10 +75,10 @@ export const deleteReview = id => {
     }
 };
 
-export const deleteReviewPhoto = id => {
+export const deleteReviewPhoto = (id, shelterId) => {
     return async dispatch => {
         try {
-
+            await axios.delete("/reviews/photo/" + shelterId, id);
             dispatch(deleteReviewPhotoSuccess(id));
         } catch (e) {
             dispatch(deleteReviewPhotoFailure(e));
