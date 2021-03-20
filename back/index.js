@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const users = require("./app/users");
 const shelters = require("./app/shelters");
+const reviews = require("./app/reviews");
 const cors = require('cors');
 const config = require("./config");
 const port = 8000;
@@ -21,6 +22,7 @@ const run = async () => {
 
     app.use("/users", users);
     app.use("/shelters", shelters);
+    app.use("/reviews", reviews);
 
     console.log("Connected");
     app.listen(port, () => {

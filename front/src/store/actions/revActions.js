@@ -67,15 +67,20 @@ export const deleteReview = id => {
     return async dispatch => {
         try {
 
-            dispatch(deleteReviewSuccess());
+            dispatch(deleteReviewSuccess(id));
         } catch (e) {
-            dispatch(deleteReviewFailure(e))
+            dispatch(deleteReviewFailure(e));
         }
     }
 };
 
 export const deleteReviewPhoto = id => {
     return async dispatch => {
-        
+        try {
+
+            dispatch(deleteReviewPhotoSuccess(id));
+        } catch (e) {
+            dispatch(deleteReviewPhotoFailure(e));
+        }
     }
-}
+};

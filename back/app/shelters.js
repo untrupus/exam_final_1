@@ -3,7 +3,7 @@ const router = express.Router();
 const config = require("../config");
 const Shelter = require("../models/Shelter");
 const auth = require('../middleware/auth');
-const permit = require("../middleware/permit")
+const permit = require("../middleware/permit");
 
 router.get('/', async (req, res) => {
     const result = await Shelter.find();
