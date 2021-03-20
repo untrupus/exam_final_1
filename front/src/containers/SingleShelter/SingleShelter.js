@@ -267,7 +267,7 @@ const SingleShelter = (props) => {
                                 onChange={inputChangeHandler}
                                 emptyIcon={<StarBorderIcon fontSize="inherit"/>}
                             />
-                            <p className='label'>Food: </p>
+                            <p className='label second'>Food: </p>
                             <Rating
                                 name="food"
                                 defaultValue={review.food}
@@ -275,7 +275,7 @@ const SingleShelter = (props) => {
                                 onChange={inputChangeHandler}
                                 emptyIcon={<StarBorderIcon fontSize="inherit"/>}
                             />
-                            <p className='label'>Interior: </p>
+                            <p className='label second'>Interior: </p>
                             <Rating
                                 name="interior"
                                 defaultValue={review.interior}
@@ -287,7 +287,7 @@ const SingleShelter = (props) => {
                         </div>
                         <button
                             type='button'
-                            className='signBtn'
+                            className='reviewBtn'
                             onClick={() => addRev(review)}
                         >
                             Add

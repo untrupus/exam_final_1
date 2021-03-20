@@ -81,8 +81,8 @@
 
 .label {
     margin-top: 20px;
-    margin-left: 30px;
     display: block;
+    font-weight: bold;
 }
 
 .reviews {
@@ -138,4 +138,21 @@
 
 .carousel {
     margin: 0 auto;
+}
+
+.reviewBtn {
+    padding: 10px;
+    margin-bottom: 20px;
+    background: cadetblue;
+    font-size: 18px;
+    color: white;
+    width: 50%;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.second {
+    margin-left: 30px;
 }
