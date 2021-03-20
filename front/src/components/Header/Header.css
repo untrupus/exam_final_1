@@ -1,0 +1,39 @@
+.headerInner {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+    align-items: center;
+    background: cadetblue;
+}
+
+.headerLogo h2 {
+    margin: 0;
+}
+
+.sign {
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sign:hover {
+    color: #0d0e0e;
+}
+
+.breadCrump {
+    color: white;
+    margin: 0 10px;
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: #0d0e0e;
+}
